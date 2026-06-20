@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="AniKartuli - ქართულენოვანი anime streaming პლატფორმის landing page ახალი სერიებით, კატალოგითა და ქართული სუბტიტრებით."
+  />
+  <title>AniKartuli - Anime ქართულად</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090914;
+      --panel: #121225;
+      --panel-soft: rgba(255, 255, 255, 0.08);
+      --text: #f7f4ff;
+      --muted: #b9b0cf;
+      --brand: #ff4f9a;
+      --brand-2: #7c5cff;
+      --accent: #33e1ff;
+      --success: #64f0aa;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 1180px;
+      font-family: "Noto Sans Georgian", "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255, 79, 154, 0.28), transparent 32rem),
+        radial-gradient(circle at 85% 8%, rgba(51, 225, 255, 0.18), transparent 28rem),
+        linear-gradient(135deg, #080812 0%, #111029 50%, #0a0916 100%);
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      content: "";
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(9, 9, 20, 0.76);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .logo-mark {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 12px 24px rgba(255, 79, 154, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 999px;
+      color: var(--text);
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 14px 32px rgba(124, 92, 255, 0.32);
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.98fr);
+      gap: 42px;
+      align-items: center;
+      padding: 72px 0 52px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(51, 225, 255, 0.09);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(2.6rem, 8vw, 5.8rem);
+      line-height: 0.96;
+      letter-spacing: -0.08em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff, #ffc1dd 45%, #8befff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      max-width: 650px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .stat {
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .player-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04));
+      box-shadow: var(--shadow);
+    }
+
+    .player-visual {
+      position: relative;
+      min-height: 410px;
+      padding: 22px;
+      background:
+        linear-gradient(to top, rgba(9, 9, 20, 0.96), rgba(9, 9, 20, 0.16) 58%),
+        radial-gradient(circle at 65% 25%, rgba(255, 255, 255, 0.18), transparent 16rem),
+        linear-gradient(135deg, #39236f, #e44b8b 52%, #2bdcff);
+    }
+
+    .player-visual::before,
+    .player-visual::after {
+      position: absolute;
+      content: "";
+      border-radius: 999px;
+      filter: blur(1px);
+    }
+
+    .player-visual::before {
+      right: 36px;
+      bottom: 94px;
+      width: 170px;
+      height: 170px;
+      background: rgba(255, 255, 255, 0.16);
+      box-shadow: -170px -80px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .player-visual::after {
+      top: 72px;
+      left: 54px;
+      width: 72px;
+      height: 72px;
+      background: rgba(255, 255, 255, 0.24);
+      box-shadow: 190px 44px 0 rgba(255, 255, 255, 0.16);
+    }
+
+    .now-playing {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      left: 22px;
+      z-index: 1;
+      display: grid;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 22px;
+      background: rgba(10, 10, 24, 0.82);
+      backdrop-filter: blur(16px);
+    }
+
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #041013;
+      background: var(--success);
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .now-playing h2 {
+      margin: 0;
+      font-size: 1.6rem;
+      letter-spacing: -0.04em;
+    }
+
+    .episode-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .episode {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 12px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+      padding: 9px 12px;
+    }
+
+    .episode.active {
+      border-color: transparent;
+      color: #120516;
+      background: #fff;
+      font-weight: 800;
+    }
+
+    .section {
+      padding: 56px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .section-heading p {
+      max-width: 520px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) auto;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .search {
+      width: 100%;
+      min-height: 52px;
+      padding: 0 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      outline: none;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .search:focus {
+      border-color: rgba(51, 225, 255, 0.58);
+      box-shadow: 0 0 0 4px rgba(51, 225, 255, 0.12);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter {
+      min-height: 52px;
+      padding: 0 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+    }
+
+    .filter.active {
+      border-color: rgba(255, 255, 255, 0.26);
+      color: var(--text);
+      background: linear-gradient(135deg, rgba(255, 79, 154, 0.72), rgba(124, 92, 255, 0.72));
+    }
+
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .anime-card {
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.22);
+    }
+
+    .poster {
+      position: relative;
+      min-height: 250px;
+      padding: 16px;
+      background: var(--poster-bg);
+    }
+
+    .poster::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background:
+        linear-gradient(to top, rgba(9, 9, 20, 0.86), transparent 58%),
+        radial-gradient(circle at 50% 34%, rgba(255, 255, 255, 0.18), transparent 7rem);
+    }
+
+    .poster-meta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .pill {
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.32);
+      backdrop-filter: blur(10px);
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    .card-body h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .card-body p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .watch-link {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .schedule {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 18px;
+    }
+
+    .feature-panel,
+    .schedule-list,
+    .cta {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-panel {
+      padding: 28px;
+      background:
+        linear-gradient(135deg, rgba(255, 79, 154, 0.2), rgba(124, 92, 255, 0.12)),
+        rgba(255, 255, 255, 0.07);
+    }
+
+    .feature-panel h3 {
+      margin: 0 0 14px;
+      font-size: 2rem;
+      letter-spacing: -0.05em;
+    }
+
+    .feature-panel p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      margin: 24px 0 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .check {
+      display: inline-grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border-radius: 50%;
+      color: #041013;
+      background: var(--success);
+      font-weight: 900;
+    }
+
+    .schedule-list {
+      padding: 10px;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      border-radius: 20px;
+    }
+
+    .schedule-item + .schedule-item {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .time {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .schedule-item h4 {
+      margin: 0 0 4px;
+    }
+
+    .schedule-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 34px;
+      background:
+        radial-gradient(circle at 92% 10%, rgba(51, 225, 255, 0.18), transparent 18rem),
+        linear-gradient(135deg, rgba(255, 79, 154, 0.2), rgba(124, 92, 255, 0.18));
+    }
+
+    .cta h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: -0.06em;
+    }
+
+    .cta p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .site-footer {
+      padding: 34px 0 42px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 34px;
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-lg);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .schedule,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .catalog {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        align-items: flex-start;
+      }
+
+      .nav-links,
+      .actions .btn-ghost {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 46px;
+      }
+
+      .stats,
+      .catalog {
+        grid-template-columns: 1fr;
+      }
+
+      .player-visual {
+        min-height: 360px;
+      }
+
+      .section-heading {
+        display: grid;
+      }
+
+      .schedule-item {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav" aria-label="მთავარი ნავიგაცია">
+      <a class="logo" href="#">
+        <span class="logo-mark" aria-hidden="true">あ</span>
+        <span>AniKartuli</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#catalog">კატალოგი</a>
+        <a href="#schedule">განრიგი</a>
+        <a href="#features">უპირატესობები</a>
+      </nav>
+      <div class="actions">
+        <a class="btn btn-ghost" href="#catalog">ძიება</a>
+        <a class="btn btn-primary" href="#watch">დაიწყე ყურება</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero">
+      <div>
+        <p class="eyebrow">ქართული სუბტიტრები და გახმოვანება ერთ სივრცეში</p>
+        <h1><span class="gradient-text">Anime ქართულად</span> ახალი სერიებით ყოველ კვირას</h1>
+        <p class="lead">
+          აღმოაჩინე ლიცენზირებული anime კოლექცია ქართულ ინტერფეისში: სწრაფი ძებნა, ჟანრის ფილტრები,
+          პროგრესის დამახსოვრება და პრემიერების განრიგი.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#catalog">კატალოგის ნახვა</a>
+          <a class="btn btn-ghost" href="#schedule">დღევანდელი პრემიერები</a>
+        </div>
+        <div class="stats" aria-label="პლატფორმის სტატისტიკა">
+          <div class="stat">
+            <strong>120+</strong>
+            <span>სერია ქართულად</span>
+          </div>
+          <div class="stat">
+            <strong>4K</strong>
+            <span>მხარდაჭერა</span>
+          </div>
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>ონლაინ ყურება</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="player-card" id="watch" aria-label="მიმდინარე სერიის player preview">
+        <div class="player-visual">
+          <div class="now-playing">
+            <span class="badge">LIVE PREVIEW</span>
+            <div>
+              <h2 id="episode-title">საკურას ღამის მატარებელი</h2>
+              <p class="lead" id="episode-copy">სერია 08 - გმირები თბილისურ ნეონებში იღვიძებენ.</p>
+            </div>
+            <div class="episode-row" aria-label="სერიის არჩევა">
+              <button class="episode active" data-title="საკურას ღამის მატარებელი" data-copy="სერია 08 - გმირები თბილისურ ნეონებში იღვიძებენ.">08</button>
+              <button class="episode" data-title="ცისფერი კომეტის ხმალი" data-copy="სერია 12 - ბოლო ბრძოლა მთვარის ხიდზე იწყება.">12</button>
+              <button class="episode" data-title="მზის აკადემია" data-copy="სერია 03 - ახალი კლუბი პირველ მისიას იღებს.">03</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="container section" id="catalog">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">კატალოგი</p>
+          <h2>აირჩიე შენი შემდეგი სერია</h2>
+        </div>
+        <p>
+          მოძებნე სათაურით ან გაფილტრე ჟანრით. ყველა ბარათი demo კონტენტია და მზადაა რეალურ
+          API-სთან მისაბმელად.
+        </p>
+      </div>
+
+      <div class="toolbar">
+        <input class="search" id="searchInput" type="search" placeholder="მოძებნე anime ქართულად..." aria-label="anime ძებნა" />
+        <div class="filters" aria-label="ჟანრის ფილტრები">
+          <button class="filter active" data-filter="all">ყველა</button>
+          <button class="filter" data-filter="adventure">სათავგადასავლო</button>
+          <button class="filter" data-filter="fantasy">ფენტეზი</button>
+          <button class="filter" data-filter="school">სკოლა</button>
+          <button class="filter" data-filter="sci-fi">Sci-Fi</button>
+        </div>
+      </div>
+
+      <div class="catalog" id="catalogGrid">
+        <article class="anime-card" data-genre="adventure" data-title="საკურას ღამის მატარებელი">
+          <div class="poster" style="--poster-bg: linear-gradient(135deg, #ff5c8a, #33206b);">
+            <div class="poster-meta">
+              <span class="pill">ქარ. სუბ</span>
+              <span class="pill">9.4</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>საკურას ღამის მატარებელი</h3>
+            <p>მოგზაურობა ქალაქებს შორის, სადაც ყოველი გაჩერება ახალ ძალას ხსნის.</p>
+            <div class="card-footer">
+              <span>12 სერია</span>
+              <a class="watch-link" href="#watch">ყურება</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="anime-card" data-genre="fantasy" data-title="ცისფერი კომეტის ხმალი">
+          <div class="poster" style="--poster-bg: linear-gradient(135deg, #26d0ce, #1a2980);">
+            <div class="poster-meta">
+              <span class="pill">გახმოვანება</span>
+              <span class="pill">9.1</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>ცისფერი კომეტის ხმალი</h3>
+            <p>ახალგაზრდა მებრძოლი კომეტის ენერგიას იცავს ჩრდილების ორდენისგან.</p>
+            <div class="card-footer">
+              <span>24 სერია</span>
+              <a class="watch-link" href="#watch">ყურება</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="anime-card" data-genre="school" data-title="მზის აკადემია">
+          <div class="poster" style="--poster-bg: linear-gradient(135deg, #f7971e, #ffd200);">
+            <div class="poster-meta">
+              <span class="pill">ქარ. სუბ</span>
+              <span class="pill">8.8</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>მზის აკადემია</h3>
+            <p>სკოლის კლუბი ყოველდღიურობას მაგიურ მისიებად აქცევს.</p>
+            <div class="card-footer">
+              <span>10 სერია</span>
+              <a class="watch-link" href="#watch">ყურება</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="anime-card" data-genre="sci-fi" data-title="ნეონური ორბიტა">
+          <div class="poster" style="--poster-bg: linear-gradient(135deg, #654ea3, #eaafc8);">
+            <div class="poster-meta">
+              <span class="pill">4K</span>
+              <span class="pill">9.0</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>ნეონური ორბიტა</h3>
+            <p>კოსმოსური კურიერი დაკარგულ სიგნალს მიჰყვება და ახალ სამყაროს პოულობს.</p>
+            <div class="card-footer">
+              <span>8 სერია</span>
+              <a class="watch-link" href="#watch">ყურება</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section schedule" id="features">
+      <div class="feature-panel">
+        <p class="eyebrow">რატომ AniKartuli?</p>
+        <h3>ქართული გამოცდილება anime ფანებისთვის</h3>
+        <p>
+          დიზაინი გათვლილია როგორც landing page-ზე, ისე მომავალ streaming app-ზე: კატალოგი,
+          player, subscription CTA და release calendar უკვე გამოყოფილი სექციებია.
+        </p>
+        <ul class="feature-list">
+          <li><span class="check">✓</span> ქართული სუბტიტრები და გახმოვანების ნიშნულები</li>
+          <li><span class="check">✓</span> responsive UI მობილურზე და desktop-ზე</li>
+          <li><span class="check">✓</span> ძებნა და ჟანრის ფილტრები JavaScript-ით</li>
+        </ul>
+      </div>
+
+      <div class="schedule-list" id="schedule">
+        <div class="schedule-item">
+          <span class="time">18:00</span>
+          <div>
+            <h4>საკურას ღამის მატარებელი - სერია 09</h4>
+            <p>პრემიერა ქართული სუბტიტრებით</p>
+          </div>
+          <span class="pill">დღეს</span>
+        </div>
+        <div class="schedule-item">
+          <span class="time">20:30</span>
+          <div>
+            <h4>ნეონური ორბიტა - სერია 04</h4>
+            <p>ახალი sci-fi ეპიზოდი 4K ხარისხით</p>
+          </div>
+          <span class="pill">დღეს</span>
+        </div>
+        <div class="schedule-item">
+          <span class="time">კვირა</span>
+          <div>
+            <h4>მზის აკადემია - სერია 05</h4>
+            <p>სეზონის შუა ნაწილი და ახალი პერსონაჟი</p>
+          </div>
+          <span class="pill">Soon</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="cta">
+        <div>
+          <h2>შემდეგ ეტაპზე დავამატოთ რეალური player?</h2>
+          <p>
+            ეს UI მზადაა backend/API ინტეგრაციისთვის: მომხმარებლის ანგარიშები, watchlist,
+            გადახდის გეგმა და ლიცენზირებული ვიდეო წყაროები.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="#catalog">დამატება watchlist-ში</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 AniKartuli. Demo landing page ქართულენოვანი anime streaming პლატფორმისთვის.</p>
+    </div>
+  </footer>
+
+  <script>
+    const filterButtons = document.querySelectorAll(".filter");
+    const cards = document.querySelectorAll(".anime-card");
+    const searchInput = document.querySelector("#searchInput");
+    const episodeButtons = document.querySelectorAll(".episode");
+    const episodeTitle = document.querySelector("#episode-title");
+    const episodeCopy = document.querySelector("#episode-copy");
+
+    let activeFilter = "all";
+
+    function renderCatalog() {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+      const existingEmptyState = document.querySelector(".empty-state");
+
+      if (existingEmptyState) {
+        existingEmptyState.remove();
+      }
+
+      cards.forEach((card) => {
+        const matchesFilter = activeFilter === "all" || card.dataset.genre === activeFilter;
+        const matchesSearch = card.dataset.title.toLowerCase().includes(query);
+        const shouldShow = matchesFilter && matchesSearch;
+
+        card.hidden = !shouldShow;
+        if (shouldShow) {
+          visibleCount += 1;
+        }
+      });
+
+      if (visibleCount === 0) {
+        const emptyState = document.createElement("p");
+        emptyState.className = "empty-state";
+        emptyState.textContent = "ამ ძებნით anime ვერ მოიძებნა. სცადე სხვა სათაური ან ჟანრი.";
+        document.querySelector("#catalogGrid").append(emptyState);
+      }
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        activeFilter = button.dataset.filter;
+        renderCatalog();
+      });
+    });
+
+    searchInput.addEventListener("input", renderCatalog);
+
+    episodeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        episodeButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        episodeTitle.textContent = button.dataset.title;
+        episodeCopy.textContent = button.dataset.copy;
+      });
+    });
+  </script>
+</body>
+</html>
