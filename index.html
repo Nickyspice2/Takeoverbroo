@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="AniKartuli - მინიმალისტური ქართულენოვანი anime streaming პლატფორმა სუბტიტრებით, კატალოგითა და პრემიერების განრიგით."
+  />
+  <title>AniKartuli - Anime ქართულად</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#" aria-label="AniKartuli მთავარი გვერდი">
+        <span class="brand-mark">AK</span>
+        <span>AniKartuli</span>
+      </a>
+
+      <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
+        <a href="#catalog">კატალოგი</a>
+        <a href="#schedule">განრიგი</a>
+        <a href="#features">ფუნქციები</a>
+      </nav>
+
+      <a class="button button-primary" href="#watch">დაწყება</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">ქართული anime სივრცე</p>
+          <h1>ნახე anime ქართულად, მარტივად და ლამაზად.</h1>
+          <p class="hero-copy">
+            სუფთა კატალოგი, სწრაფი ფილტრები, პრემიერების განრიგი და player preview ერთ
+            მინიმალისტურ ვებსაიტში.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#catalog">კატალოგის ნახვა</a>
+            <a class="button button-secondary" href="#schedule">დღევანდელი განრიგი</a>
+          </div>
+
+          <dl class="stats" aria-label="პლატფორმის სტატისტიკა">
+            <div>
+              <dt>120+</dt>
+              <dd>სერია</dd>
+            </div>
+            <div>
+              <dt>4K</dt>
+              <dd>ხარისხი</dd>
+            </div>
+            <div>
+              <dt>ქარ.</dt>
+              <dd>სუბტიტრები</dd>
+            </div>
+          </dl>
+        </div>
+
+        <aside class="watch-panel" id="watch" aria-label="player preview">
+          <div class="player">
+            <div class="player-art" aria-hidden="true">
+              <span class="moon"></span>
+              <span class="orbit orbit-one"></span>
+              <span class="orbit orbit-two"></span>
+            </div>
+            <div class="player-content">
+              <span class="status-pill">ახლა გადის</span>
+              <h2 id="episode-title">საკურას ღამის მატარებელი</h2>
+              <p id="episode-copy">სერია 08 - გმირები თბილისურ ნეონებში იღვიძებენ.</p>
+              <div class="episode-row" aria-label="სერიის არჩევა">
+                <button class="episode active" data-title="საკურას ღამის მატარებელი" data-copy="სერია 08 - გმირები თბილისურ ნეონებში იღვიძებენ.">08</button>
+                <button class="episode" data-title="ცისფერი კომეტის ხმალი" data-copy="სერია 12 - ბოლო ბრძოლა მთვარის ხიდზე იწყება.">12</button>
+                <button class="episode" data-title="მზის აკადემია" data-copy="სერია 03 - ახალი კლუბი პირველ მისიას იღებს.">03</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">კატალოგი</p>
+            <h2>პოპულარული სათაურები</h2>
+          </div>
+          <p>მოძებნე სათაურით ან აირჩიე ჟანრი. კონტენტი demo მონაცემებია და მზადაა API-სთან დასაკავშირებლად.</p>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-field">
+            <span class="visually-hidden">anime ძებნა</span>
+            <input id="searchInput" type="search" placeholder="მოძებნე anime..." />
+          </label>
+
+          <div class="filters" aria-label="ჟანრის ფილტრები">
+            <button class="filter active" data-filter="all">ყველა</button>
+            <button class="filter" data-filter="adventure">Adventure</button>
+            <button class="filter" data-filter="fantasy">Fantasy</button>
+            <button class="filter" data-filter="school">School</button>
+            <button class="filter" data-filter="sci-fi">Sci-Fi</button>
+          </div>
+        </div>
+
+        <div class="catalog-grid" id="catalogGrid">
+          <article class="anime-card" data-genre="adventure" data-title="საკურას ღამის მატარებელი">
+            <div class="poster poster-pink">
+              <span>ქარ. სუბ</span>
+              <strong>9.4</strong>
+            </div>
+            <div class="card-body">
+              <h3>საკურას ღამის მატარებელი</h3>
+              <p>მოგზაურობა ქალაქებს შორის, სადაც ყოველი გაჩერება ახალ ძალას ხსნის.</p>
+              <div class="card-meta">
+                <span>12 სერია</span>
+                <a href="#watch">ყურება</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="anime-card" data-genre="fantasy" data-title="ცისფერი კომეტის ხმალი">
+            <div class="poster poster-blue">
+              <span>გახმოვანება</span>
+              <strong>9.1</strong>
+            </div>
+            <div class="card-body">
+              <h3>ცისფერი კომეტის ხმალი</h3>
+              <p>ახალგაზრდა მებრძოლი კომეტის ენერგიას იცავს ჩრდილების ორდენისგან.</p>
+              <div class="card-meta">
+                <span>24 სერია</span>
+                <a href="#watch">ყურება</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="anime-card" data-genre="school" data-title="მზის აკადემია">
+            <div class="poster poster-gold">
+              <span>ქარ. სუბ</span>
+              <strong>8.8</strong>
+            </div>
+            <div class="card-body">
+              <h3>მზის აკადემია</h3>
+              <p>სკოლის კლუბი ყოველდღიურობას პატარა, თბილ და მაგიურ მისიებად აქცევს.</p>
+              <div class="card-meta">
+                <span>10 სერია</span>
+                <a href="#watch">ყურება</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="anime-card" data-genre="sci-fi" data-title="ნეონური ორბიტა">
+            <div class="poster poster-violet">
+              <span>4K</span>
+              <strong>9.0</strong>
+            </div>
+            <div class="card-body">
+              <h3>ნეონური ორბიტა</h3>
+              <p>კოსმოსური კურიერი დაკარგულ სიგნალს მიჰყვება და ახალ სამყაროს პოულობს.</p>
+              <div class="card-meta">
+                <span>8 სერია</span>
+                <a href="#watch">ყურება</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-section" id="features">
+      <div class="container feature-grid">
+        <div>
+          <p class="eyebrow">ფუნქციები</p>
+          <h2>ნაკლები ხმაური, მეტი კონტენტი.</h2>
+          <p class="section-copy">
+            დიზაინი მარტივად გაფართოვდება რეალური streaming პლატფორმისთვის: ანგარიშები,
+            watchlist, subscription და ლიცენზირებული ვიდეო წყაროები.
+          </p>
+        </div>
+
+        <div class="feature-list">
+          <article>
+            <span>01</span>
+            <h3>ქართული UI</h3>
+            <p>ყველა ძირითადი ტექსტი ქართულადაა და ადვილად შესაცვლელია.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>სწრაფი ძებნა</h3>
+            <p>სათაურებისა და ჟანრების ფილტრი მუშაობს დამატებითი ბიბლიოთეკის გარეშე.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>სუფთა სტრუქტურა</h3>
+            <p>HTML, CSS და JavaScript უკვე ცალკე ფაილებშია ორგანიზებული.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="schedule">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">განრიგი</p>
+            <h2>დღევანდელი პრემიერები</h2>
+          </div>
+          <p>მოკლე release list, რომელიც მომავალში backend-იდან მარტივად ჩაიტვირთება.</p>
+        </div>
+
+        <div class="schedule-list">
+          <article>
+            <time>18:00</time>
+            <div>
+              <h3>საკურას ღამის მატარებელი - სერია 09</h3>
+              <p>ქართული სუბტიტრები</p>
+            </div>
+            <span>დღეს</span>
+          </article>
+          <article>
+            <time>20:30</time>
+            <div>
+              <h3>ნეონური ორბიტა - სერია 04</h3>
+              <p>4K პრემიერა</p>
+            </div>
+            <span>დღეს</span>
+          </article>
+          <article>
+            <time>კვირა</time>
+            <div>
+              <h3>მზის აკადემია - სერია 05</h3>
+              <p>ახალი პერსონაჟი</p>
+            </div>
+            <span>მალე</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="container cta-card">
+        <div>
+          <p class="eyebrow">შემდეგი ნაბიჯი</p>
+          <h2>დავამატოთ რეალური anime library და player?</h2>
+        </div>
+        <a class="button button-primary" href="#catalog">კატალოგში დაბრუნება</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 AniKartuli. Demo ვებსაიტი ქართულენოვანი anime streaming პლატფორმისთვის.</p>
+    </div>
+  </footer>
+</body>
+</html>
